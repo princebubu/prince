@@ -1,0 +1,116 @@
+
+/* Popup container */
+.popup {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color:rgb(74, 73, 73);;
+    color: #696969;
+    margin: 0;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    max-width: 400px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: popup 0.5s ease, transform 1s ease; /* Smooth fade and slide effect */
+}
+
+.popup p {
+    margin-bottom: 15px;
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.popup strong {
+    color: #F44336;
+    font-size: 20px;
+}
+
+/* Image inside popup */
+.popup-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Styling for the link */
+.popup .button {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.popup-link {
+    display: inline-block;
+    background-color: #0090C5;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.popup-link:hover {
+    background-color: #3a94b4;
+    transition: background-color 0.5s ease, transform 1s ease-in-out;
+}
+
+/* Close button style */
+.close-btn-btn {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.close-btn-btn:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+/* Font Awesome icon */
+.fas.fa-times {
+    font-size: 20px;
+}
+
+/* Media Query for Small Screens (Mobile) */
+@media (max-width: 600px) {
+    .popup {
+        bottom: 10px; /* Adjust bottom positioning for small screens */
+        left: 10px; /* Reduce left spacing */
+        max-width: 90%; /* Allow popup to take up more width on smaller screens */
+        padding: 15px; /* Reduce padding */
+    }
+
+    .popup p {
+        font-size: 14px; /* Smaller text for mobile */
+    }
+
+    .popup strong {
+        font-size: 18px; /* Adjust font size for smaller screens */
+    }
+
+    .popup-link {
+        font-size: 14px; /* Adjust button font size */
+        padding: 6px 8px; /* Adjust padding for buttons */
+    }
+
+    .close-btn-btn {
+        top: -10px; /* Adjust position of the close button */
+        right: -10px;
+        font-size: 16px; /* Smaller close button on mobile */
+    }
+
+    .popup-image {
+        border-radius: 3px; /* Reduce border-radius for smaller screens */
+    }
+}
