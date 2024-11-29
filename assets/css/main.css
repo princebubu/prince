@@ -2677,7 +2677,7 @@ input, select, textarea {
 
 			#footer section {
 				border-bottom: solid 1px #ccc;
-				padding-bottom: 3em;
+				padding-bottom: 1em;
 				margin-bottom: 1em !important;
 			}
 
@@ -2685,4 +2685,8 @@ input, select, textarea {
 				text-align: left;
 			}
 
+	}
+
+	.my-class-img {
+		height: 200px;
 	}

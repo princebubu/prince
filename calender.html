@@ -3,111 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Calendar with Live Events</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-            height: 50px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        td {
-            cursor: pointer;
-        }
-        .live-event {
-            background-color: #ffcc00; /* Highlight color for live events */
-            font-weight: bold;
-            color: red;
-        }
-        .live-event-text {
-            font-size: 10px;
-            color: red;
-        }
-    </style>
+    <title>Email.js Example</title>
 </head>
 <body>
-    <h1>Dynamic Calendar with Live Events</h1>
-    <div>
-        <button onclick="changeMonth(-1)">Previous Month</button>
-        <button onclick="changeMonth(1)">Next Month</button>
-    </div>
-    <h2 id="monthName"></h2>
-    <table id="calendar"></table>
 
-    <script>
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let currentDate = new Date();
+    <!-- Your HTML content -->
 
-        function renderCalendar() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            const firstDay = new Date(year, month, 1).getDay();
-            const lastDate = new Date(year, month + 1, 0).getDate();
+    <!-- Include the Email.js CDN -->
+    <script type="module">
+        import emailjs from 'https://cdn.emailjs.com/dist/email.min.js';
 
-            // Set month name
-            document.getElementById('monthName').textContent = `${months[month]} ${year}`;
+        // Initialize Email.js with your User ID (get it from Email.js dashboard)
+        emailjs.init('UmhyN_zLNpMqEXHDd');  // Replace YOUR_USER_ID with your actual Email.js user ID
 
-            // Create table
-            let calendarHTML = `
-                <thead>
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
-                </thead>
-                <tbody>
-            `;
+        // Example function to send an email
+        function sendEmail() {
+            const templateParams = {
+                name: 'John Doe',
+                email: 'john@example.com',
+                message: 'Hello, this is a test message!'
+            };
 
-            let day = 1;
-            for (let i = 0; i < 6; i++) {
-                calendarHTML += "<tr>";
-                for (let j = 0; j < 7; j++) {
-                    if (i === 0 && j < firstDay) {
-                        calendarHTML += "<td></td>";
-                    } else if (day > lastDate) {
-                        break;
-                    } else {
-                        let dayClass = "";
-                        let liveEventText = "";
-
-                        // Mark Fridays and Saturdays as live event days
-                        if (j === 5 || j === 6) { // Friday (5) or Saturday (6)
-                            dayClass = "live-event";
-                            liveEventText = "<div class='live-event-text'>Live Event</div>";
-                        }
-
-                        // Add the day number and live event text if applicable
-                        calendarHTML += `<td class="${dayClass}">${day}${liveEventText}</td>`;
-                        day++;
-                    }
-                }
-                calendarHTML += "</tr>";
-                if (day > lastDate) break;
-            }
-
-            calendarHTML += "</tbody>";
-            document.getElementById("calendar").innerHTML = calendarHTML;
+            emailjs.send('service_ls3hfck', 'template_4gpghbo', templateParams)
+                .then(response => {
+                    console.log('Email sent successfully:', response.status, response.text);
+                })
+                .catch(error => {
+                    console.error('Error sending email:', error);
+                });
         }
 
-        function changeMonth(change) {
-            currentDate.setMonth(currentDate.getMonth() + change);
-            renderCalendar();
-        }
-
-        // Initialize calendar
-        renderCalendar();
+        // Attach sendEmail function to a button or form
+        document.getElementById('send-button').onclick = sendEmail;
     </script>
+
+    <button id="send-button">Send Test Email</button>
+
 </body>
 </html>

@@ -1,32 +1,172 @@
-.contact-form {
-    padding: 30px 50px;
+/* Contact Form Section */
+.main-contact-container {
+    padding: 40px 0;
+    margin: 0;
+    max-width: 100%;
     background-color: white;
+}
+
+.container-container {
+    padding: 30px 50px;
+    max-width: 100%;
+    margin: 0 auto; 
+}
+
+.contact-form {
     border-radius: 8px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    width: 900px; 
+    margin: 0 auto;
 }
+
+/* Contact Form Header */
 .contact-header {
-    margin-bottom: 20px;
-    text-align: center;
-}
-.contact-info {
-    margin-top: 40px;
+    margin-bottom: 18px;
     text-align: center;
 }
 
-.btn {
-    font-weight: bold;
-    background-color: black;
+.contact-header h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.contact-header p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Input & Textarea Styling */
+
+.form-control input#name,
+.form-control input#email,
+.form-control textarea#message {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #696969;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #9a9a9a;
+    outline: none;
+}
+
+/* Button Styling */
+
+button#send-button {
+    margin-top: 20px;
+    background-color: #0090C5;
     color: white;
-    border: 2px solid black;
-    padding: 10px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    transition: 1s;
+    padding: 10px 0;
+    border-radius: 8px;
     cursor: pointer;
+    width: 100%;
+    font-size: 18px;
 }
 
-.btn:hover {
-    background-color: white;
+button#send-button:hover {
+    background-color: #097ca6;
+    border: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+
+    .main-contact-container{
+        padding: 15px 0;
+    }
+
+    .contact-form {
+        padding: 10px 0;
+        width: 100%;
+        border-radius: none;
+        box-shadow: none;
+    }
+
+    .contact-header h2 {
+        font-size: 24px; /* Slightly smaller header on mobile */
+    }
+
+    .contact-header p {
+        font-size: 14px; /* Smaller text on mobile */
+    }
+
+    .form-control {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .btn {
+        font-size: 14px; /* Adjust button font size on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-form {
+        padding: 15px 20px; /* Less padding on smaller screens */
+    }
+
+    .btn {
+        font-size: 12px; /* Smaller button text */
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1;
+    left: 50%; /* Center horizontally */
+    top: 50%;  /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust for exact centering */
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* Dark background with transparency */
+    padding: 20px;
+}
+
+/* Modal Content Styles */
+.modal-content {
+    background-color: #E8F0FE;
+    max-width: 400px; /* Maximum width of modal */
+    margin: auto; /* Ensure it's centered */
+    padding: 18px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Content Styles */
+.modal-content p {
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Close Button Styles */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
     color: black;
-    border-color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

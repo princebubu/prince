@@ -1,40 +1,52 @@
-<!DOCTYPE HTML>
-<!--
-	Verti by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>contact</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/contact.css">
-	</head>
-	<body class="is-preload homepage">
-		<div id="page-wrapper">
+  <head>
+    <title>contact</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/contact.css" />
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<header id="header" class="container">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+	</script>
+  </head>
 
-						<!-- Logo -->
-							<div id="logo">
-								<h1><a href="index.html">Prince</a></h1>
-								<span>Beta Version</span>
-							</div>
+  <body class="is-preload homepage">
+	
+	<!-- Success Modal -->
+	<div id="successModal" class="modal">
+	    <div class="modal-content">
+	        <!-- <span class="close" id="closeModal">&times;</span> -->
+	        <h2 id="status"></h2>
+	        <p id="message"></p>
+	    </div>
+	</div>
+	<!-- Success/Error End -->
 
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li>
-										<a href="#">Events</a>
-										<ul>
-											<li><a href="#">Tiktok Live</a></li>
-											<li><a href="#">Scrim Schedules</a></li>
-											<!-- <li>
+    <div id="page-wrapper">
+      <!-- Header -->
+      <div id="header-wrapper">
+        <header id="header" class="container">
+          <!-- Logo -->
+          <div id="logo">
+            <h1><a href="index.html">Prince</a></h1>
+            <span>Beta Version</span>
+          </div>
+
+          <!-- Nav -->
+          <nav id="nav">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li>
+                <a href="#">Events</a>
+                <ul>
+                  <li><a href="#">Tiktok Live</a></li>
+                  <li><a href="#">Scrim Schedules</a></li>
+                  <!-- <li>
 												<a href="#">Phasellus consequat</a>
 												<ul>
 													<li><a href="#">Lorem ipsum dolor</a></li>
@@ -44,119 +56,217 @@
 												</ul>
 											</li>
 											<li><a href="#">Veroeros feugiat</a></li> -->
-										</ul>
-									</li>
-									<li><a href="about.html">About</a></li>
-									<li><a href="right-sidebar.html">Support PRINCE</a></li>
-									<li class="current"><a href="contact.html">Contact</a></li>
-								</ul>
-							</nav>
+                </ul>
+              </li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="right-sidebar.html">Support PRINCE</a></li>
+              <li class="current"><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+      
+	  <!-- Main -->
 
-					</header>
-				</div>
-			<!-- Main -->
-				<!-- Contact Form Section -->
-				<div class="container contact-form">
-					<div class="contact-header">
-						<h2>Contact Me</h2>
-						<p>If you have any questions or want to reach out, feel free to send a message below.</p>
-					</div>
-		
-					<!-- Contact Form -->
-					<form>
-						<div class="form-group">
-							<label for="name">Name</label>
-							<input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-						</div>
-						<div class="form-group">
-							<label for="email">Email address</label>
-							<input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-						</div>
-						<div class="form-group">
-							<label for="message">Message</label>
-							<textarea class="form-control" id="message" rows="4" placeholder="Write your message here..." required></textarea>
-						</div>
-						<button type="submit" class="btn btn-primary btn-block">Send Message</button>
-					</form>
-				</div>
+      <!-- Contact Form Section -->
+      <div class="main-contact-container">
+        <div class="container-container contact-form">
+          <div class="contact-header">
+            <h2>Contact Me</h2>
+            <p>
+              If you have any questions or want to reach out, feel free to send
+              a message below.
+            </p>
+          </div>
 
-				<!-- Footer -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="col-3 col-6-medium col-12-small">
+          <!-- Contact Form -->
+    	  <form id="contact-form">
+    	      <div>
+    	          <label for="name">Name*</label>
+    	          <input type="text" id="name" required />
+    	      </div>
+    	      <div>
+    	          <label for="email">Email*</label>
+    	          <input type="email" id="email" required />
+    	      </div>
+    	      <div>
+    	          <label for="message">Message (Optional)</label>
+    	          <textarea id="message"></textarea>
+    	      </div>
+    	      <button id="send-button" type="submit">Send Message</button>
+    	  </form>
+		</div>
+       </div>
 
-								<!-- Links -->
-									<section class="widget links">
-										<h3>About</h3>
-										<p>PRINCE - dynamic gaming creator known for his exciting live hosting and gaming.
-										</p>
-									</section>
+      <!-- Footer -->
+      <div id="footer-wrapper">
+        <footer id="footer" class="container">
+          <div class="row">
+            <div class="col-3 col-6-medium col-12-small">
+              <!-- Links -->
+              <section class="widget links">
+                <h3>About</h3>
+                <p>
+                  PRINCE - dynamic gaming creator known for his exciting live
+                  hosting and gaming.
+                </p>
+              </section>
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+              <!-- Links -->
+              <section class="widget links">
+                <h3>Quick Visit</h3>
+                <ul class="style2">
+                  <li><a href="index.html">Home</a></li>
+                  <!-- <li><a href="#">Events</a></li> -->
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="right-sidebar.html">Support PRINCE</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </section>
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+              <!-- Links -->
+              <section class="widget links">
+                <h3>Contact</h3>
+                <p>
+                  Babesa, Thimphu, Bhutan<br />
+                  princegaming.bhutan@gmail.com<br />
+                  +975 17313672
+                </p>
+              </section>
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+              <!-- Contact -->
+              <section class="widget contact last">
+                <h3>Social Links</h3>
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.tiktok.com/@prince.bubu"
+                      class="icon brands fa-tiktok"
+                      ><span class="label">TikTok</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.facebook.com/princecreation.bubu"
+                      class="icon brands fa-facebook-f"
+                      ><span class="label">Facebook</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/prince.insta.bubu/"
+                      class="icon brands fa-instagram"
+                      ><span class="label">Instagram</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/@prince.bubuYT"
+                      class="icon brands fa-youtube"
+                      ><span class="label">YouTube</span></a
+                    >
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div id="copyright">
+                <ul class="menu">
+                  <li>&copy; prince. All rights reserved</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
 
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-								<!-- Links -->
-								<section class="widget links">
-									<h3>Quick Visit</h3>
-									<ul class="style2">
-										<li><a href="index.html">Home</a></li>
-										<!-- <li><a href="#">Events</a></li> -->
-										<li><a href="about.html">About</a></li>
-										<li><a href="right-sidebar.html">Support PRINCE</a></li>
-										<li><a href="contact.html">Contact</a></li>
-									</ul>
-								</section>
 
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-
-								<!-- Links -->
-									<section class="widget links">
-										<h3>Contact</h3>
-										<p>Babesa, Thimphu, Bhutan<br />
-											princegaming.bhutan@gmail.com<br />
-											+975 17313672</p>
-									</section>
-
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-
-								<!-- Contact -->
-									<section class="widget contact last">
-										<h3>Social Links</h3>
-										<ul>
-											<li><a href="https://www.tiktok.com/@prince.bubu" class="icon brands fa-tiktok"><span class="label">TikTok</span></a></li>
-											<li><a href="https://www.facebook.com/princecreation.bubu" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-											<li><a href="https://www.instagram.com/prince.insta.bubu/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-											<li><a href="https://www.youtube.com/@prince.bubuYT" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
-										</ul>
-									</section>
-
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-12">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; prince. All rights reserved</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
-
-			</div>
-
-		<!-- Scripts -->
-
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+	<script type="text/javascript">
+		// Initialize Email.js with your public user ID
+		emailjs.init('wHk1tHvdboUpgs3QK'); 
+	
+		// Show the success or error modal
+		function showSuccessModal(status) {
+			const modal = document.getElementById("successModal");
+			const statusText = document.getElementById('status');
+			const messageText = document.getElementById('message');
+	
+			if (status === 'success') {
+				statusText.textContent = "Success";
+				messageText.textContent = "Your message was sent successfully!";
+				statusText.style.color = "green";
+				messageText.style.color = "#909090"; 
+				modal.style.display = "block"; 
+			} else {
+				statusText.textContent = "Error";
+				messageText.textContent = "Something went wrong. Try again!";
+				statusText.style.color = "red";  
+				messageText.style.color = "#909090";  
+				modal.style.display = "block";
+			}
+	
+			// Automatically hide the modal after 4 seconds
+			setTimeout(closeModal, 3000);
+		}
+	
+		// Hide the success modal
+		function closeModal() {
+			const modal = document.getElementById("successModal");
+			modal.style.display = "none";  
+		}
+	
+		// Handle form submission
+		function sendEmail(event) {
+			event.preventDefault();
+	
+			// Collect form values
+			const templateParams = {
+				from_name: document.getElementById('name').value,
+				from_email: document.getElementById('email').value,
+				message: document.getElementById('message').value,
+			};
+	
+			// Send email using Email.js
+			emailjs.send('service_ls3hfcl', 'template_4gpghbo', templateParams)
+				.then((response) => {
+					console.log('SUCCESS!', response.status, response.text);
+					showSuccessModal('success');  
+				})
+				.catch((error) => {
+					console.log('FAILED...', error);
+					showSuccessModal('error');
+				});
+		}
+	
+		// Add event listener to the form for submission
+		document.getElementById('contact-form').addEventListener('submit', sendEmail);
+	
+		// Add event listener to the close button of the modal
+		document.getElementById('closeModak').addEventListener('click', closeModal);
+	
+		// Close the modal if the user clicks anywhere outside of it
+		window.onclick = function(event) {
+			const modal = document.getElementById("successModal");
+			if (event.target === modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+	
+	
+</body>
 </html>
