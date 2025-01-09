@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>purchase-uc</title>
-    <link rel="stylesheet" href="assets/css/uc.css">
+    <link rel="stylesheet" href="/assets/css/uc.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="chat-bot.css">
+    <link rel="stylesheet" href="discount-popup.css">
 
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
@@ -26,26 +28,9 @@
                 <nav id="nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li>
-                            <a href="#">Events</a>
-                            <ul>
-                                <li><a href="#">Tiktok Live</a></li>
-                                <li><a href="#">Scrim Schedules</a></li>
-                                <!-- <li>
-                                    <a href="#">Phasellus consequat</a>
-                                    <ul>
-                                        <li><a href="#">Lorem ipsum dolor</a></li>
-                                        <li><a href="#">Phasellus consequat</a></li>
-                                        <li><a href="#">Magna phasellus</a></li>
-                                        <li><a href="#">Etiam dolore nisl</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Veroeros feugiat</a></li> -->
-                            </ul>
-                        </li>
                         <li class="current"><a href="uc.html">Purchase UC</a></li>
                         <li><a href="right-sidebar.html">Support PRINCE</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </nav>
 
@@ -64,79 +49,91 @@
         </div>
         <div class="container-inner">
             <div class="product-cards">
-                <div class="product-card">
+                <div class="product-card" data-price="100">
                     <img src="images/UC_01.webp" alt="UC Icon">
                     <h2>60 UC</h2>
-                    <p>Price: <span class="price">Nu. 95</span></p>
+                    <p> <span class="price"></span></p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-price="200">
                     <img src="images/UC_01.webp" alt="UC Icon">
                     <h2>120 UC</h2>
-                    <p>Price: <span class="price">Nu. 215</span></p>
+                    <p> <span class="price"></span></p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-price="440">
                     <img src="images/UC_01.webp" alt="UC Icon">
                     <h2>300 UC (25 Free)</h2>
-                    <p>Price: <span class="price">Nu. 475</span></p>
+                    <p> <span class="price"></span></p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-price="540">
                     <img src="images/UC_01.webp" alt="UC Icon">
                     <h2>360 UC (25 Free)</h2>
-                    <p>Price: <span class="price">Nu.560</span></p>
+                    <p> <span class="price"></span></p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-price="850">
                     <img src="images/UC_01.webp" alt="UC Icon">
                     <h2>600 UC (60 Free)</h2>
-                    <p>Price: <span class="price">Nu. 890</span></p>
+                    <p> <span class="price"></span></p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-price="950">
                     <img src="images/UC_01.webp" alt="UC Icon">
-                    <h2>720 UC (60 Free)</h2>
-                    <p>Price: <span class="price">Nu. 1080</span></p>
+                    <h2>720 UC</h2>
+                    <p> <span class="price"></span></p>
                 </div>
             </div>
 
-            <form class="order-info" id="uc-order-form">
-                <div class="order-info-inner">
-
-                    <!-- PUBG Name Field -->
-                    <label for="your-name">Full Name</label>
-                    <input type="text" id="your-name" placeholder="Enter Your Full Name" required>
-
-                    <!-- PUBG UID -->
-                    <label for="uid">PUBG UID</label>
-                    <input type="text" id="uid" placeholder="Enter UID" required>
-                
-                    <!-- PUBG Name Field -->
-                    <label for="pubg-name">PUBG IGN</label>
-                    <input type="text" id="pubg-name" placeholder="Enter PUBG Name" required>
-            
-                    <!-- Email Field -->
-                    <div class="email-field">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Enter Your Email" required>
-                        <span class="error-message" id="email-error">Please enter a valid email address.</span>
+            <div class="right-count">
+                <div class="summary-container"> 
+                    <h2>Calculate Your Budget (in BTN)</h2>
+                    <p id="selected-item">No item selected</p>
+                    <div class="quantity-controls">
+                        <button class="decrease">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase">+</button>
                     </div>
-                
-                    <!-- UC Package Dropdown -->
-                    <div class="dropdown-container">
-                        <!-- UC Package Dropdown -->
-                        <label for="uc-package">UC Package</label>
-                        <select id="uc-package" required>
-                            <option value="60 UC">60 UC</option>
-                            <option value="120 UC">120 UC</option>
-                            <option value="300 UC">300 UC (25 Free)</option>
-                            <option value="360 UC">360 UC (25 Free)</option>
-                            <option value="600 UC">600 UC (60 Free)</option>
-                            <option value="720 UC">720 UC (60 Free)</option>
-                        </select>
+                    <p id="summary-price">Price <span id="total-price">BTN 0</span></p>
+    
+                    <span class="savings-price"> Discount Details
+                        <img onclick="showModal()" src="images/arrow-right.png" alt="arrow-button">
+                    </span>
+                    <div class="request">
+                        <a href="https://www.facebook.com/princecreation.bubu/"><button type="button" id="summary-submit-btn">Chat With Me</button></a>
                     </div>
-                    
-                    <p id="warning">Note: PUBG International server: Do not support recharge for Korea, Japan, Vietnam, and Taiwan servers</p>
                 </div>
-                <button type="button" id="submit-btn">Top-Up Now</button>
-            </form>
+            </div>
         </div>
+    </div>
+
+    <!-- Chatbot Trigger Icon -->
+    <div id="chatbot-icon">
+        <img src="images/bot.png" alt="Chat-Icon" />
+    </div>
+
+    <!-- Chatbot UI -->
+    <div id="chatbot" class="hidden">
+        <div id="chat-header">
+            Chat with Me!
+            <button id="close-btn">&times;</button>
+        </div>
+        <div id="chat-body">
+            <div id="messages" class="chat-messages"></div>
+            <div id="typing-indicator">
+                <span>...</span>
+            </div>
+        </div>
+        <div id="chat-footer">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+    <div class="discount-modal" id="discountModal">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <h2>Discount Details</h2>
+        <p><span class="label">Original Price</span><span class="original-price" id="originalPrice">BTN 4.99</span></p>
+        <p><span class="label">Current Price</span><span class="current-price" id="currentPrice">BTN 0.00</span></p>
+        <p id="current"><span class="label">Official Discount</span><span class="discount" id="discount">BTN 0.64</span></p>
     </div>
 
     <!-- Footer -->
@@ -160,10 +157,9 @@
                         <h3>Quick Visit</h3>
                         <ul class="style2">
                             <li><a href="index.html">Home</a></li>
-                            <!-- <li><a href="#">Events</a></li> -->
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="uc.html">Purchase UC</a></li>
                             <li><a href="right-sidebar.html">Support PRINCE</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="about.html">About</a></li>
                         </ul>
                     </section>
 
@@ -197,51 +193,13 @@
                 <div class="col-12">
                     <div id="copyright">
                         <ul class="menu">
-                            <li>&copy; prince. All rights reserved</li>
+                            <li>&copy; 2025 prince. All rights reserved</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </footer>
     </div>
-
-    <script type="text/javascript">
-        emailjs.init('wHk1tHvdboUpgs3QK'); // Replace 'YOUR_USER_ID' with your EmailJS User ID
-
-        document.getElementById('submit-btn').addEventListener('click', function() {
-            const your_name = document.getElementById('your-name').value;
-            const uid = document.getElementById('uid').value;
-            const pubgName = document.getElementById('pubg-name').value;
-            const email = document.getElementById('email').value;
-            const ucPackage = document.getElementById('uc-package').value;
-        
-            if (!your_name || !uid || !pubgName || !email || !ucPackage) {
-                alert('Please fill in all fields.');
-                return;
-            }
-        
-            const templateParams = {
-                your_name: your_name,
-                uid: uid,
-                pubg_name: pubgName,
-                email: email,
-                uc_package: ucPackage,
-            };
-        
-            emailjs.send('service_7zotrhi', 'template_e1bd1ld', templateParams)
-                .then(function(response) {
-                    console.log('Success!', response.status, response.text);
-                    alert('Your order has been placed successfully!');
-
-                    // Reset the form
-                    document.getElementById('uc-order-form').reset();
-
-                }, function(error) {
-                    console.log('Failed...', error);
-                    alert('There was an issue with the submission. Please try again.');
-                });
-        });
-    </script>
 
     <script>
         const emailInput = document.getElementById('email');
@@ -276,5 +234,125 @@
             });
         }
     </script>
+
+<script>
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbot = document.getElementById('chatbot');
+    const closeBtn = document.getElementById('close-btn');
+    const sendBtn = document.getElementById('send-btn');
+    const userInput = document.getElementById('user-input');
+    const messages = document.getElementById('messages');
+    const typingIndicator = document.getElementById('typing-indicator');
+    let isChatOpened = false; // Track if the chat is opened for the first time
+
+    // Hide chatbot icon initially
+    chatbotIcon.style.display = 'none';
+
+    // Show chatbot icon after 5 seconds
+    setTimeout(() => {
+        chatbotIcon.style.display = 'flex';
+    }, 5000);
+
+    // Toggle Chatbot
+    chatbotIcon.addEventListener('click', () => {
+        chatbot.classList.remove('hidden');
+        if (!isChatOpened) {
+            displayTypingIndicator(true); // Show typing animation
+            setTimeout(sendGreetingMessage, 5000); // Send greeting message after 5 seconds
+            isChatOpened = true;
+        }
+    });
+
+    closeBtn.addEventListener('click', () => {
+        chatbot.classList.add('hidden');
+    });
+
+    // Send Message
+    sendBtn.addEventListener('click', handleSendMessage);
+    userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleSendMessage();
+    });
+
+    function handleSendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        displayMessage(message, 'user-message');
+
+        displayTypingIndicator(true);
+        setTimeout(() => {
+            const botResponse = getBotResponse(message);
+            displayMessage(botResponse, 'bot-message');
+            displayTypingIndicator(false);
+        }, 1000);
+
+        userInput.value = '';
+    }
+
+    function displayMessage(message, className) {
+        const messageDiv = document.createElement('div');
+        messageDiv.textContent = message;
+        messageDiv.className = className;
+        messages.appendChild(messageDiv);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function displayTypingIndicator(show) {
+        if (show) {
+            typingIndicator.style.display = 'block';
+            animateTypingIndicator();
+        } else {
+            typingIndicator.style.display = 'none';
+        }
+    }
+
+    function animateTypingIndicator() {
+        let dots = '';
+        const interval = setInterval(() => {
+            dots = dots.length < 3 ? dots + '.' : '';
+            typingIndicator.textContent = `Typing${dots}`;
+        }, 500);
+
+        // Stop animation when typing indicator is hidden
+        typingIndicator.addEventListener('DOMSubtreeModified', () => {
+            if (typingIndicator.style.display === 'none') clearInterval(interval);
+        });
+    }
+
+    function sendGreetingMessage() {
+        displayMessage('Hello! How can I assist you today?', 'bot-message');
+        displayTypingIndicator(false); // Hide typing animation
+    }
+
+    function getBotResponse(userMessage) {
+        const responses = {
+            hello: 'Hi there! How can I assist you today?',
+            help: 'Sure, let me know how I can help!',
+            thanks: 'You’re welcome! Anything else I can assist with?',
+            bye: 'Goodbye! Have a great day!',
+        };
+
+        return responses[userMessage.toLowerCase()] || "I'm sorry, I didn’t quite catch that. Could you rephrase?";
+    }
+</script>
+
+<script>
+    // Select all product-card elements
+    const productCards = document.querySelectorAll('.product-card');
+
+    // Loop through each product card
+    productCards.forEach(card => {
+        // Get the price from the data-price attribute
+        const price = card.getAttribute('data-price');
+
+        // Update the span with the class 'price' to display the price
+        const priceSpan = card.querySelector('.price');
+        priceSpan.textContent = `BTN ${price}`;
+    });
+</script>
+
+<script src="order-summary.js"></script>
+<script src="discount-price.js"></script>
+
 </body>
 </html>

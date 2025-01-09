@@ -2690,3 +2690,22 @@ input, select, textarea {
 	.my-class-img {
 		height: 200px;
 	}
+
+	#profile-prince{
+		width: 300px;
+	}
+
+	/* Default style for larger screens */
+	#marquee-banner {
+		width: 100%;
+	  }
+	
+	  /* Mobile-specific adjustments */
+	  @media only screen and (max-width: 768px) {
+		#marquee-banner {
+		  width: 100%;              /* Set the width to 60% of the screen */
+		  margin-left: 80px;          /* Align to the left */
+		  padding: 5px 0;          /* Maintain padding */
+		  text-align: left;        /* Align the text to the left */
+		}
+	  }

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-wrapper">
+        <header id="header" class="container">
+
+            <!-- Logo -->
+                <div id="logo">
+                    <h1><a href="index.html">Prince</a></h1>
+                    <span>Beta Version</span>
+                </div>
+
+            <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li>
+                            <a href="#">Events</a>
+                            <ul>
+                                <li><a href="#">Tiktok Live</a></li>
+                                <li><a href="#">Scrim Schedules</a></li>
+                                <!-- <li>
+                                    <a href="#">Phasellus consequat</a>
+                                    <ul>
+                                        <li><a href="#">Lorem ipsum dolor</a></li>
+                                        <li><a href="#">Phasellus consequat</a></li>
+                                        <li><a href="#">Magna phasellus</a></li>
+                                        <li><a href="#">Etiam dolore nisl</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Veroeros feugiat</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="current"><a href="uc.html">Purchase UC</a></li>
+                        <li><a href="right-sidebar.html">Support PRINCE</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+        </header>
+    </div>
+
+    <div class="checkout">
+        <form class="order-info" id="uc-order-form">
+            <div class="order-info-inner">
+                <!-- PUBG Name Field -->
+                <label id="uc-label-checkout" for="your-name">Full Name</label>
+                <input type="text" id="your-name" placeholder="Enter Your Full Name" required>
+        
+                <!-- PUBG UID -->
+                <label id="uc-label-checkout" for="uid">PUBG UID</label>
+                <input type="text" id="uid" placeholder="Enter UID" required>
+            
+                <!-- PUBG Name Field -->
+                <label id="uc-label-checkout" for="pubg-name">PUBG IGN</label>
+                <input type="text" id="pubg-name" placeholder="Enter PUBG Name" required>
+        
+                <!-- Email Field -->
+                <div class="email-field">
+                    <label id="uc-label-checkout" for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter Your Email" required>
+                    <span class="error-message" id="email-error">Please enter a valid email address.</span>
+                </div>
+                <!-- UC Package Dropdown -->
+                <div  class="dropdown-container">
+                    <!-- UC Package Dropdown -->
+                    <label id="uc-label-checkout" for="uc-package">UC Package</label>
+                    <select id="uc-package" required>
+                        <option value="60 UC">60 UC</option>
+                        <option value="120 UC">120 UC</option>
+                        <option value="300 UC">300 UC (25 Free)</option>
+                        <option value="360 UC">360 UC (25 Free)</option>
+                        <option value="600 UC">600 UC (60 Free)</option>
+                        <option value="720 UC">720 UC (60 Free)</option>
+                    </select>
+                </div>
+                <p id="warning">Note: PUBG International server: Do not support recharge for Korea, Japan, Vietnam, and Taiwan servers</p>
+            </div>
+            <button type="button" id="submit-btn">Email Request</button>
+        </form>
+    </div>
+
+    <script>
+        const emailInput = document.getElementById('email-field');
+        const emailError = document.getElementById('email-error');
+    
+        // Function to validate email
+        emailInput.addEventListener('input', () => {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
+            if (emailInput.value === '') {
+                emailInput.classList.remove('valid', 'invalid');
+                emailError.style.display = 'none';
+            } else if (emailPattern.test(emailInput.value)) {
+                emailInput.classList.add('valid');
+                emailInput.classList.remove('invalid');
+                emailError.style.display = 'none';
+            } else {
+                emailInput.classList.add('invalid');
+                emailInput.classList.remove('valid');
+                emailError.style.display = 'block';
+            }
+        });
+    
+        // Form submission validation
+        const form = document.querySelector('form'); // Replace with your form's selector
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                if (!emailInput.checkValidity() || emailInput.classList.contains('invalid')) {
+                    e.preventDefault();
+                    emailError.style.display = 'block';
+                    emailInput.focus();
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        emailjs.init('wHk1tHvdboUpgs3QK'); // Replace 'YOUR_USER_ID' with your EmailJS User ID
+
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            const your_name = document.getElementById('your-name').value;
+            const uid = document.getElementById('uid').value;
+            const pubgName = document.getElementById('pubg-name').value;
+            const email = document.getElementById('email').value;
+            const ucPackage = document.getElementById('uc-package').value;
+        
+            if (!your_name || !uid || !pubgName || !email || !ucPackage) {
+                alert('Please fill in all fields.');
+                return;
+            }
+        
+            const templateParams = {
+                your_name: your_name,
+                uid: uid,
+                pubg_name: pubgName,
+                email: email,
+                uc_package: ucPackage,
+            };
+        
+            emailjs.send('service_7zotrhi', 'template_e1bd1ld', templateParams)
+                .then(function(response) {
+                    console.log('Success!', response.status, response.text);
+                    alert('Your order has been placed successfully!');
+
+                    // Reset the form
+                    document.getElementById('uc-order-form').reset();
+
+                }, function(error) {
+                    console.log('Failed...', error);
+                    alert('There was an issue with the submission. Please try again.');
+                });
+        });
+    </script>
+</body>
+</html>

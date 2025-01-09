@@ -73,8 +73,9 @@ body {
 
 .product-card {
     flex: 1 1 calc(33.33% - 15px); /* Adjusts card width dynamically */
-    max-width: 150px; /* Prevents cards from becoming too wide */
+    max-width: 200px; /* Prevents cards from becoming too wide */
     border-radius: 4px;
+    /* padding: 10px; */
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s;
@@ -90,7 +91,7 @@ body {
 }
 
 .product-card h2 {
-    font-size: 12px;
+    font-size: 18px;
     color: #333;
     margin: 10px 0 5px;
 }
